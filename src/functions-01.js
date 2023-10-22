@@ -17,7 +17,16 @@
  * example: 'Buzz Lightyear' returns 'Lightyear, Buzz'
  */
 function nameShuffle(str) {
-  // write your code here & return value
+  // Split the string into an array of words
+  const nameArray = str.split(' ');
+
+  // Extract the first and last names
+  const firstName = nameArray[0];
+  const lastName = nameArray[nameArray.length - 1];
+
+  // Form the result string
+  const result = `${lastName}, ${firstName}`;
+  return result;
 }
 
 /**
@@ -35,7 +44,13 @@ function nameShuffle(str) {
  * example: '&', '&' returns true
  */
 function isStrangePair(str1, str2) {
-  // write your code here & return value
+  // Check if the first character of str1 is equal to the last character of str2 and vice versa
+  return (
+    str1.length > 0
+    && str2.length > 0
+    && str1[0] === str2[str2.length - 1]
+    && str2[0] === str1[str1.length - 1]
+  );
 }
 
 /**
@@ -47,7 +62,12 @@ function isStrangePair(str1, str2) {
  * example: '98.6%' returns 0.986
  */
 function convertToDecimal(percent) {
-  // write your code here & return value
+  // Remove the "%" character from the string
+  const numberString = percent.slice(0, -1);
+
+  // Convert the string to a number and divide by 100 to get the decimal representation
+  const result = parseFloat(numberString) / 100;
+  return result;
 }
 
 /**
@@ -60,7 +80,20 @@ function convertToDecimal(percent) {
  * example: [1, 2, 3, 4], [4, 3, 2, 1, 5] returns false
  */
 function checkSameSum(a1, a2) {
-  // write your code here & return value
+  // If lengths are different, return false
+  // if (a1.length !== a2.length) {
+  //  return false;
+  // }
+
+  // Calculate the sum of elements in each array
+  const sumA1 = a1.reduce((acc, curr) => acc + curr, 0);
+  const sumA2 = a2.reduce((acc, curr) => acc + curr, 0);
+
+  console.log('sumA1:', sumA1);
+  console.log('sumA2:', sumA2);
+
+  // Compare the sums
+  return sumA1 === sumA2;
 }
 
 /**
@@ -71,7 +104,9 @@ function checkSameSum(a1, a2) {
  * must use a closure to save the username
  */
 function saveLogin(name) {
-  // write your code here
+  return function getUsername() {
+    return name;
+  };
 }
 
 module.exports = {
